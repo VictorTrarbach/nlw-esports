@@ -1,0 +1,13 @@
+1 Responsivo
+2 Cadastramos 6 games, mas se fosse 7 ia bugar, seria legal colocar um carousel
+keen-slider.io
+
+3 Dentro da publicação de anúncio (seleção do game)
+
+Usar o Radix, componente de Select
+
+4 Validação - N sei fazer uma boa validação, colocar borda vermelha e talz
+biblioteca react-hook-form
+Zod, Yup...
+
+5 Tela de login Autenticação, logar com a twitch, logar com o Discord, e podemos reaproveitar o código do login do Discord.

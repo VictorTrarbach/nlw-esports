@@ -1,0 +1,25 @@
+Componente: Uma função que retorna um conjunto de html
+
+2 momentos que a gente cria componentes, 
+quando algo se repete,
+qualdo algo, mesmo que não se repita, conseguimos separar aquilo em um código menor, 
+componente a parte, para ficar mais organizado, parece algo sozinho.
+
+Coisas que não se conversam, podem ficar separadas, viram componentes.
+
+Texto em si não faz sentido virar componente, dificilmente conseguiria reaproveitar em outras telas
+
+Fazer os componentes da aplicação
+
+Carregar os jogos lá da nossa API em Node
+
+Todo código que colocamos no componente, é algo que executa no momento que o 
+componente é exibido em tela. Se eu fizer alguma requisição pro back-end, ele vai 
+fazer exatamente quando o componente for exibido em tela.
+
+React= reatividade - um efeito colateral reagir dado uma ação do usuário.
+
+{hasUserClickedOnButton ? 'Usuário clicou' : 'Não clicou'(null etc...)}
+
+Toda alteração de estado, provoca uma renderização
+

@@ -1,0 +1,200 @@
+npm init -y
+Package.json (definições principais) - tbm fica a 
+referência para as dependências.
+
+npm install express
+Express - micro-framework(conjunto de códigos) (permite a gente escrever coisas muito comuns 
+do back-end só que no Node), ex Rotas, listagem de usuários, cadastro de usuários, quando 
+instalamos essas dependências podemos utilizar elas. 
+(O próprio express tem suas dependências que tbm tem suas dependências)
+
+Package-lock pro npm ter uma referência mais rápida pras dependência e quais dependências tem dependências em comum para ficar mais rápido de instalar
+
+Coloquei o "type": "module", no package.json *Apaga, n precisa se n dá BO*
+
+para usar o import express from 'express', fica mais legível e atual
+
+Usei o Hoppscotch(Insomnia) enquanto o node src/server.mjs estava rodando para fazer a requisição com a URL http://localhost:3333/ads
+
+Tipagem estática: enquanto a gente desenvolve, tem um processo em background que vai testando os caminhos do nosso código, pra ver se o código que estamos escrevendo é válido, uma forma de EVITAR ERROS de irem para PRODUÇÃO, já no desenvolvimento. Testa o fluxo do nosso código para ver se pode ou não dar algum erro
+
+npm i typescript
+
+O Node n entende typescript nativamente, apenas javascript, só utilizamos o Typescript para DESENVOLVIMENTO, quando for colocar a aplicação para produção, aí o code precisa estar em Javascript
+
+Como vamos usar só para desenvolvimento, n faz sentido usar como uma dependência de produção(comum)
+Então instalamos como uma dependência só de desenvolvimento
+npm i typescript -D
+
+trocamos o server.mjs para server.ts
+
+se tento rodar node src/server.mjs
+n funciona, pq o Node n entende o typescript
+Precisamos converter ele para um formato que o Node entenda
+
+{*Notas
+
+*// www.minhaapi.com/ads*
+*Está em modo de desenvolvimento então localhost:3000/ads (n precisa de um domínio)*
+*logo abaixo vai ser qual a função que vai executar quando acessar a rota*
+
+/*request busca informações vindo da requisição*/
+/*response envia uma resposta pro cliente*
+//*pode mandar texto send('Acessou Ads!')*
+//*mas nosso backend vai retornar geralmente no formato json*
+//*N é legal testar as rotas no navegador, pois o navegador não entende json*
+
+//*Ouvindo novas requisições e não pare até o user parar*
+
+}
+
+package.json
+"scripts": {
+    
+    "build": "tsc" 
+  },
+
+{/*tsc is the typescript compiler*/ }
+
+npm run build
+não roda ainda pq precisamos de um arquivo de configurações
+
+npx serve para executarmos alguma biblioteca ou executável que tenhamos instalado dentro do nosso projeto
+rodamos o compilador do typescript
+
+Cria um arquivo de configurações do typescript para nós= tsconfig.json
+npx tsc --init
+Cria um arquivo Javascript, pq ele leu o Typescript e gerou um Javascript com base no arquivo
+npm run build
+
+Deum erro
+node src/server.js
+
+está usando o padrão require, n está usando o module
+então mudo para  "module": "ES2020", no tsconfig.json
+*n precisa do ES2020 - Deixa CommonJS*
+
+npm run build
+e
+node src/server.js
+
+tsconfig:
+
+"rootDir": "./src",
+"outDir": "./build", 
+N quero que os arquivos js sejam gerados no mesmo diretório dos ts
+quero que fique em uma pasta build
+apaga server.js
+
+npm run build
+
+typescript:
+Tipagem estática. Permite a gente definir qual é o formato que esperamos de cada informação dentro da nossa aplicação
+
+//EX_Tipagem_Estática
+
+tsconfig.json
+Descomenta a linha moduleResolution: "node",
+
+Algumas bibliotecas do npm não tem suporte nativo ao Typescript vemos isso no npmjs.com/package/express 
+por exemplo no caso e vejo oq tenho que 
+
+Já que é algo do typescript, vou usar apenas em Desenv , mas n em produção
+npm install @types/express -D
+
+Ao adicionar um anúncio novo no ts ou no js ainda n muda na requisição do hoppscotch
+pq preciso fechar o node, rodar dnv e ok
+
+Isso é chato, vamos instalar : npm i ts-node-dev -D
+e adicionar no package.json:
+"scripts": {
+    
+    "dev": "tsnd src/server.ts"
+  },
+
+
+Deu ruim, apaga o type:module do package.json
+
+e no tsconfig.json tira o module -> "ES2020"
+e substitui  pro CommonJS
+
+npm run dev
+Dá restart automático da API, n precisa parar e rodar 😋
+
+Criar nosso projeto React 🌟
+
+Bora usar o Vite - projeto React - view - qualquer outro projeto utilizando bibliotecas mais modernas de Front-End Very fast 
+
+Pq precisamos dele?  Assim como utilizamos o ts-node-dev pra converter o nosso código ts -> js pro Node conseguir entender, tem muita coisa aque vamos escrever no React/View/Svelt que não é entendido pelo Browser - Ele entende o js mais puro possível 
+Só que o React/View possuem funcionalidades que o browser ainda não entende
+
+Precisamos de uma ferramenta para fazer a compilação, converter em um formato que o Browser entenda
+E o Vite é a ferramenta que faz isso da maneira mais rápida e delicinha
+
+Vamos para uma pasta acima, no caso cd .. - esports 
+npm create vite@latest
+
+Nome: web/framework/variant e GG
+
+cd web
+code .
+
+npm install (está sem node_modules)
+
+remove assets no src e todos os .css
+
+remove importações pro css, app css e logo no react, remove todas as importações de cima
+
+tudo dentro da Function App e coloca o return apenas, só vai na fé mano
+
+JSX -> Js + XML (HTML)
+
+React -> Conjunto de HTML/CSS/JS -> Componentes
+
+npm run dev
+
+Muda automático, tudo lindo
+
+faz os exports do Figma para a pasta assets
+
+Vite importa para dentro do head o css joga o conteúdo na página, sem precisar ir no html e escrever um link com css.
+
+tailwindcss.com (Produtividade) Remove a necessidade de ficar trocando pra html/css/html/css....
+para montar a interface da aplicação
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+
+Configurações
+tailwind.config.cjs:
+Passar onde vão estar os arquivos html que vão conter classes do Tailwind
+content: [
+  './src/** /*.tsx',
+  './index.html'
+]
+Dentro da pasta src, ** todas as outras pastas que estiverem aqui dentro, *.tsx todos os arquivos que terminarem com .tsx são os arquivos onde vai estar o conteúdo da aplicação.
+
+Criar pasta styles, com um arquivo main.css
+Dentro dela:
+@tailwind base; 
+@tailwind components;
+@tailwind utilities;
+
+npx tailwindcss init -p Pra criar o postcss.config.cjs  
+
+
+npm run dev
+
+
+npm i phosphor-react
+
+
+
+fontFamily: {
+      sans: ['Inter', 'sans-serif'],
+    },
+
+2
+
+npm install @radix-ui/react-dialog
+olhar components/Dialog do radix-ui
