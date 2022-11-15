@@ -1,6 +1,6 @@
 Projeto de um software web/mobile para encontrar duos em jogos.  Trilha Ignite da NLW e-Sports.
 <p align="center">
-  <img alt="" src=".github/capa.png" width="50%">
+  <img alt="" src=".github/Landing.png" width="100%">
 </p>
 
 <p align="center">

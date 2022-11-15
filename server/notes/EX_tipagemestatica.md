@@ -8,7 +8,7 @@
   name: string;
   createdAt: Date;
 }
-                                          //ad precisa ter pelo menos esses campos aqui
+
 function calculateHowMuchTimeTheAdWasPublished(ad: Ad) {
 //calculo quantos dias foi postado
 }
