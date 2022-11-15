@@ -11,7 +11,6 @@ import logoImg from './assets/logo-nlw-esports.svg';
 import axios from 'axios';
 
 
-
 interface Game{
     id: string;
     title: string;

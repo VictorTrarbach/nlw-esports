@@ -193,3 +193,12 @@ Proteger a nossa aplicação contra front-ends que a gente quer que não acessem
 app.use(cors({
 // em produção https://meusite.com ou http://localhost:3000
 }))
+
+
+Rodar tudo
+
+Olha Hoppscotch, vai que..
+
+Front-end -> npm run dev
+Back-end -> npm run dev + npx prisma studio
+mobile -> expo start
